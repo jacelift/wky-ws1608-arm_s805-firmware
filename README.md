@@ -42,3 +42,25 @@ A template for building OpenWrt with GitHub Actions
 ## License
 
 [MIT](https://github.com/P3TERX/Actions-OpenWrt/blob/main/LICENSE) © [**P3TERX**](https://p3terx.com)
+
+
+
+https://github.com/jacelift/OneCloud-OpenWRT-Image-Builder
+
+OpenWRT镜像
+建议使用Lean的OpenWRT源
+编译环境的搭建与编译方法见其说明
+Target System选择Broadcom BCM27xx，Subtarget选择BCM2710 boards (64 bit)，Target Profile选择Raspberry Pi 2B-1.2/3B/3B+/3CM
+Target Image需要勾选ext4
+编译之后的镜像：bin/targets/brcm2708/bcm2710/openwrt-brcm2708-bcm2710-rpi-3-ext4-factory.img.gz
+解压：gunzip openwrt-brcm2708-bcm2710-rpi-3-ext4-factory.img.gz得到OpenWRT的镜像文件：openwrt-brcm2708-bcm2710-rpi-3-ext4-factory.img
+初始配置
+初始配置与程序在files文件夹下：
+
+etc/modules.d/wireless_enable：无线硬件的设置，原地址https://github.com/maxlicheng/phicomm-n1-wireless，不要删除
+etc/config/network：网络接口配置，默认IP为192.168.1.254，网关192.168.1.1，DNS114.114.114.114
+etc/config/dhcp：DHCP配置，默认关闭DHCP服务
+etc/config/wireless：无线网络配置，默认关闭无线网络
+etc/config下的文件可以删除，路由第一次启动会自动生成默认的配置文件。
+
+可以把当前路由的备份文件合并到files中。
